@@ -1,19 +1,27 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  Alert,
+  SafeAreaView,
+} from "react-native";
+import MyComponent from "./MyComponent";
 
 const HomePage = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.textOne}>
-        Hello World
-        <Text>I learn react native</Text>
-      </Text>
+    <SafeAreaView style={styles.container}>
+      <Button
+        title="Press Mew"
+        color={"orange"}
+        onPress={() => Alert.alert("Button was clicked")}
+      />
 
-      <View
-        style={{ width: 100, height: 100, backgroundColor: "black" }}
-      ></View>
-      <View style={{ width: 100, height: 100, backgroundColor: "gray" }}></View>
-    </View>
+      <MyComponent title={"Musa Sayar "}/>
+      <MyComponent title={"I learn react native"}/>
+      <MyComponent />
+    </SafeAreaView>
   );
 };
 
@@ -23,7 +31,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#ffdf80",
+    backgroundColor: "#4b0097",
   },
   textOne: {
     fontSize: 24,

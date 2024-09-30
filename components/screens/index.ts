@@ -1,3 +1,3 @@
 import HomePage from "./HomePage";
-
-export { HomePage };
+import MyComponent from "./MyComponent";
+export { HomePage, MyComponent };
