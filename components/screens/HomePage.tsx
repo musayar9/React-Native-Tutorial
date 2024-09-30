@@ -8,6 +8,7 @@ import {
   SafeAreaView,
 } from "react-native";
 import MyComponent from "./MyComponent";
+import Counter from "./Counter";
 
 const HomePage = () => {
   return (
@@ -18,9 +19,12 @@ const HomePage = () => {
         onPress={() => Alert.alert("Button was clicked")}
       />
 
-      <MyComponent title={"Musa Sayar "}/>
-      <MyComponent title={"I learn react native"}/>
+      <MyComponent title={"Musa Sayar "} />
+      <MyComponent title={"I learn react native"} />
       <MyComponent />
+
+      <Counter start={100} step={5}/>
+      <Counter start={200} step={10}/>
     </SafeAreaView>
   );
 };
