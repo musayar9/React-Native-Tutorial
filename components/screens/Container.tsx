@@ -17,6 +17,7 @@ const Container = ({ width, height, variant, children }: ContainerProps) => {
         height: height,
         borderRadius: width / 2,
         margin: 5,
+    
         backgroundColor:
           variant === "primary"
             ? "#04be"

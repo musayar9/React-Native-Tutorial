@@ -12,6 +12,14 @@ import Counter from "./Counter";
 import Container from "./Container";
 
 const HomePage = () => {
+  const greet = () =>
+    Alert.alert("Attentiton", "Any Message...", [
+      {
+        text: "Yes",
+        onPress: () => console.log("Yes button was pressed"),
+      },
+      { text: "No", onPress: () => console.log("No button was pressed") },
+    ]);
   return (
     <SafeAreaView style={styles.container}>
       {/* <Button
@@ -26,13 +34,15 @@ const HomePage = () => {
 
       <Counter start={100} step={5}/>
       <Counter start={200} step={10}/> */}
-      <Container width={200} height={400} variant="primary">
+      {/* <Container width={200} height={400} variant="primary">
         <Container width={50} height={50} variant="warning">
           <Text>Abce</Text>
         </Container>
-      </Container>
+      </Container> */}
       {/* <Container width={100} height={200} variant="warning" />
       <Container width={100} height={200} variant="error" /> */}
+
+      <Button title="click me" onPress={greet} />
     </SafeAreaView>
   );
 };
