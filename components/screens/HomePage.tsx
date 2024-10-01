@@ -8,6 +8,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  StatusBar,
 } from "react-native";
 import Box from "./Box";
 import { IUser, useFakeUserData } from "@/useFakeUserData";
@@ -100,7 +101,7 @@ const HomePage = () => {
       {users?.map((e)=>(
       <Text style={{fontSize:24}} key={e?.id}>{e?.name}</Text>
       ))} */}
-
+<StatusBar/>
       <ScrollView>
         {users?.map((e) => (
           <User key={e.id} user={e} />
