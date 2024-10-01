@@ -10,6 +10,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Box from "./Box";
+import { IUser, useFakeUserData } from "@/useFakeUserData";
+import User from "./User";
 
 const HomePage = () => {
   // const greet = () =>
@@ -20,9 +22,9 @@ const HomePage = () => {
   //     },
   //     { text: "No", onPress: () => console.log("No button was pressed") },
   //   ]);
-  
-  
-  const onLongPress = ()=>Alert.alert("Long Pressed....")
+  const users:IUser[] = useFakeUserData();
+
+  const onLongPress = () => Alert.alert("Long Pressed....");
   return (
     <SafeAreaView style={styles.container}>
       {/* <Button
@@ -84,14 +86,26 @@ const HomePage = () => {
       </ScrollView> */}
 
       {/* TouchableOpacity */}
-      <TouchableOpacity onPress={()=>Alert.alert("pressed....")} onLongPress={onLongPress}>
+      {/* <TouchableOpacity onPress={()=>Alert.alert("pressed....")} onLongPress={onLongPress}>
         <Image
           style={{ width: 200, height: 200, borderRadius: 100 }}
           source={{
             uri: "https://bilisimkitabi.com/portal/upload/post/5f70e0ee34c8a_7-react-native.jpg",
           }}
         />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+
+      {/*   
+      
+      {users?.map((e)=>(
+      <Text style={{fontSize:24}} key={e?.id}>{e?.name}</Text>
+      ))} */}
+
+      <ScrollView>
+        {users?.map((e) => (
+          <User key={e.id} user={e} />
+        ))}
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -100,8 +114,8 @@ export default HomePage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+
+
     // backgroundColor: "#b3b2fd",
   },
   textOne: {
