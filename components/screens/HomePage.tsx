@@ -6,7 +6,10 @@ import {
   Alert,
   SafeAreaView,
   Image,
+  ScrollView,
+  TouchableOpacity,
 } from "react-native";
+import Box from "./Box";
 
 const HomePage = () => {
   // const greet = () =>
@@ -17,6 +20,9 @@ const HomePage = () => {
   //     },
   //     { text: "No", onPress: () => console.log("No button was pressed") },
   //   ]);
+  
+  
+  const onLongPress = ()=>Alert.alert("Long Pressed....")
   return (
     <SafeAreaView style={styles.container}>
       {/* <Button
@@ -55,7 +61,7 @@ const HomePage = () => {
 
       {/* image */}
 
-      <Image
+      {/* <Image
         style={{ width: 200, height: 200, borderRadius: 100 }}
         source={{
           uri: "https://pics.craiyon.com/2023-11-26/oMNPpACzTtO5OVERUZwh3Q.webp",
@@ -64,7 +70,28 @@ const HomePage = () => {
       <Image
         style={{ width: 200, height: 200, borderRadius: 100 }}
         source={require("@/assets/images/person.webp")}
-      />
+      /> */}
+
+      {/* ScrollView */}
+      {/* <ScrollView
+        contentContainerStyle={{ alignItems: "center" }}
+        style={{ width: "100%" }}
+      >
+        <Box />
+        <Box />
+        <Box />
+        <Box />
+      </ScrollView> */}
+
+      {/* TouchableOpacity */}
+      <TouchableOpacity onPress={()=>Alert.alert("pressed....")} onLongPress={onLongPress}>
+        <Image
+          style={{ width: 200, height: 200, borderRadius: 100 }}
+          source={{
+            uri: "https://bilisimkitabi.com/portal/upload/post/5f70e0ee34c8a_7-react-native.jpg",
+          }}
+        />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -75,7 +102,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#b3b2fd",
+    // backgroundColor: "#b3b2fd",
   },
   textOne: {
     fontSize: 24,
