@@ -11,11 +11,13 @@ import {
   StatusBar,
   ImageBackground,
   Switch,
+  Modal,
 } from "react-native";
 import Box from "./Box";
 import { IUser, useFakeUserData } from "@/useFakeUserData";
 import User from "./User";
 import { useState } from "react";
+import { TextInput } from "react-native-gesture-handler";
 
 const HomePage = () => {
   // const greet = () =>
@@ -31,6 +33,10 @@ const HomePage = () => {
   const onLongPress = () => Alert.alert("Long Pressed....");
 
   const [isSwitchEnabled, setIsSwitchEnabled] = useState<boolean>(false);
+
+  const [name, setName] = useState<string>("");
+  
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
 
   return (
     <SafeAreaView style={styles.container}>
@@ -123,7 +129,9 @@ const HomePage = () => {
       >
       <Button title="Like At" onPress={()=>Alert.alert("Like atıldı")}/>
       </ImageBackground> */}
-      <Switch
+      
+      {/* switch */}
+      {/* <Switch
         thumbColor={isSwitchEnabled ? "#4b0097" : "red"}
         trackColor={{ true: "#6d0dcc", false: "#ff9d9d" }}
         ios_backgroundColor={"#ff9d9d"}
@@ -136,7 +144,46 @@ const HomePage = () => {
         onPress={() =>
           console.log(isSwitchEnabled ? "Aktif edildis" : "pasif edilidi")
         }
+      /> */}
+
+{/* text ınput */}
+{/* 
+      <TextInput
+        style={{
+          width: 200,
+          height: 50,
+          backgroundColor: "#e4e4e4",
+          borderRadius: 12,
+          padding: 10,
+          margin: 10,
+          fontSize: 20,
+          fontWeight: "bold",
+        }}
+        multiline
+        placeholder="isminzi girin"
+        value={name}
+        onChangeText={(e) => setName(e)}
       />
+      <Button title="Show" onPress={() => Alert.alert("Dikkaat!", name)} /> */}
+      
+      {/* Modal */}
+
+      {/* <Button title="Open Modal" onPress={() => {setIsModalVisible(true)}} />
+      <Modal transparent visible={isModalVisible} onRequestClose={() => {}} animationType="slide">
+        <View
+          style={{
+            backgroundColor: "#ebebeb",
+            position: "absolute",
+            height: 300,
+            bottom: 0,
+            width: "100%",
+            borderTopLeftRadius: 40,
+            borderTopRightRadius: 40,
+          }}
+        >
+        <Button  title="Close" onPress={()=>setIsModalVisible(false)}/>
+        </View>
+      </Modal> */}
     </SafeAreaView>
   );
 };
