@@ -10,10 +10,12 @@ import {
   TouchableOpacity,
   StatusBar,
   ImageBackground,
+  Switch,
 } from "react-native";
 import Box from "./Box";
 import { IUser, useFakeUserData } from "@/useFakeUserData";
 import User from "./User";
+import { useState } from "react";
 
 const HomePage = () => {
   // const greet = () =>
@@ -27,6 +29,9 @@ const HomePage = () => {
   const users: IUser[] = useFakeUserData();
 
   const onLongPress = () => Alert.alert("Long Pressed....");
+
+  const [isSwitchEnabled, setIsSwitchEnabled] = useState<boolean>(false);
+
   return (
     <SafeAreaView style={styles.container}>
       {/* <Button
@@ -111,19 +116,27 @@ const HomePage = () => {
           <User key={e.id} user={e} />
         ))}
       </ScrollView> */}
-      
-      <ImageBackground source={(require("@/assets/images/maimi.jpg"))}
+
+      {/* <ImageBackground source={(require("@/assets/images/maimi.jpg"))}
       style={{width:300, height:300, }}
       imageStyle={{borderRadius:12}}
       >
-      
-      {/* <View style={{width:"100%", height:20, backgroundColor:"orange"}}>
-      
-      </View> */}
-      
       <Button title="Like At" onPress={()=>Alert.alert("Like atıldı")}/>
-      
-      </ImageBackground>
+      </ImageBackground> */}
+      <Switch
+        thumbColor={isSwitchEnabled ? "#4b0097" : "red"}
+        trackColor={{ true: "#6d0dcc", false: "#ff9d9d" }}
+        ios_backgroundColor={"#ff9d9d"}
+        value={isSwitchEnabled}
+        onChange={() => setIsSwitchEnabled(!isSwitchEnabled)}
+      />
+
+      <Button
+        title="Göster"
+        onPress={() =>
+          console.log(isSwitchEnabled ? "Aktif edildis" : "pasif edilidi")
+        }
+      />
     </SafeAreaView>
   );
 };
@@ -132,8 +145,8 @@ export default HomePage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  justifyContent:"center",
-  alignItems:"center"
+    justifyContent: "center",
+    alignItems: "center",
     // backgroundColor: "#b3b2fd",
   },
   textOne: {
