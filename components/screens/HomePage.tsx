@@ -9,6 +9,7 @@ import {
   ScrollView,
   TouchableOpacity,
   StatusBar,
+  ImageBackground,
 } from "react-native";
 import Box from "./Box";
 import { IUser, useFakeUserData } from "@/useFakeUserData";
@@ -23,7 +24,7 @@ const HomePage = () => {
   //     },
   //     { text: "No", onPress: () => console.log("No button was pressed") },
   //   ]);
-  const users:IUser[] = useFakeUserData();
+  const users: IUser[] = useFakeUserData();
 
   const onLongPress = () => Alert.alert("Long Pressed....");
   return (
@@ -101,12 +102,28 @@ const HomePage = () => {
       {users?.map((e)=>(
       <Text style={{fontSize:24}} key={e?.id}>{e?.name}</Text>
       ))} */}
-<StatusBar/>
+
+      {/* Scroll View */}
+
+      {/* <StatusBar/>
       <ScrollView>
         {users?.map((e) => (
           <User key={e.id} user={e} />
         ))}
-      </ScrollView>
+      </ScrollView> */}
+      
+      <ImageBackground source={(require("@/assets/images/maimi.jpg"))}
+      style={{width:300, height:300, }}
+      imageStyle={{borderRadius:12}}
+      >
+      
+      {/* <View style={{width:"100%", height:20, backgroundColor:"orange"}}>
+      
+      </View> */}
+      
+      <Button title="Like At" onPress={()=>Alert.alert("Like atıldı")}/>
+      
+      </ImageBackground>
     </SafeAreaView>
   );
 };
@@ -115,8 +132,8 @@ export default HomePage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
-
+  justifyContent:"center",
+  alignItems:"center"
     // backgroundColor: "#b3b2fd",
   },
   textOne: {
