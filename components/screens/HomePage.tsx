@@ -18,6 +18,8 @@ import { IUser, useFakeUserData } from "@/useFakeUserData";
 import User from "./User";
 import { useState } from "react";
 import { TextInput } from "react-native-gesture-handler";
+import Foo from "./Foo";
+import CounterTwo from "./CounterTwo";
 
 const HomePage = () => {
   // const greet = () =>
@@ -35,8 +37,8 @@ const HomePage = () => {
   const [isSwitchEnabled, setIsSwitchEnabled] = useState<boolean>(false);
 
   const [name, setName] = useState<string>("");
-  
-  const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
+
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -129,7 +131,7 @@ const HomePage = () => {
       >
       <Button title="Like At" onPress={()=>Alert.alert("Like atıldı")}/>
       </ImageBackground> */}
-      
+
       {/* switch */}
       {/* <Switch
         thumbColor={isSwitchEnabled ? "#4b0097" : "red"}
@@ -146,8 +148,8 @@ const HomePage = () => {
         }
       /> */}
 
-{/* text ınput */}
-{/* 
+      {/* text ınput */}
+      {/* 
       <TextInput
         style={{
           width: 200,
@@ -165,7 +167,7 @@ const HomePage = () => {
         onChangeText={(e) => setName(e)}
       />
       <Button title="Show" onPress={() => Alert.alert("Dikkaat!", name)} /> */}
-      
+
       {/* Modal */}
 
       {/* <Button title="Open Modal" onPress={() => {setIsModalVisible(true)}} />
@@ -184,6 +186,9 @@ const HomePage = () => {
         <Button  title="Close" onPress={()=>setIsModalVisible(false)}/>
         </View>
       </Modal> */}
+      {/* <Foo/> */}
+      <CounterTwo start={100} />
+      <CounterTwo start={300} />
     </SafeAreaView>
   );
 };
@@ -192,8 +197,8 @@ export default HomePage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
     // backgroundColor: "#b3b2fd",
   },
   textOne: {
