@@ -20,6 +20,7 @@ import { useState } from "react";
 import { TextInput } from "react-native-gesture-handler";
 import Foo from "./Foo";
 import CounterTwo from "./CounterTwo";
+import CounterThree from "./CounterThree";
 
 const HomePage = () => {
   // const greet = () =>
@@ -39,6 +40,7 @@ const HomePage = () => {
   const [name, setName] = useState<string>("");
 
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+const [showComponent, setShowComponent] = useState<boolean>(true)
 
   return (
     <SafeAreaView style={styles.container}>
@@ -187,8 +189,15 @@ const HomePage = () => {
         </View>
       </Modal> */}
       {/* <Foo/> */}
-      <CounterTwo start={100} />
-      <CounterTwo start={300} />
+      {/* <CounterTwo start={100} />
+      <CounterTwo start={300} /> */}
+      
+      {showComponent && 
+      
+      <CounterThree/>
+      }
+      
+      <Button title="show Component"  onPress={()=>setShowComponent(!showComponent)}/>
     </SafeAreaView>
   );
 };
@@ -197,8 +206,8 @@ export default HomePage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center",
+    justifyContent: "center",
+    alignItems: "center",
     // backgroundColor: "#b3b2fd",
   },
   textOne: {
