@@ -40,7 +40,7 @@ const HomePage = () => {
   const [name, setName] = useState<string>("");
 
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-const [showComponent, setShowComponent] = useState<boolean>(true)
+  const [showComponent, setShowComponent] = useState<boolean>(true);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -191,6 +191,9 @@ const [showComponent, setShowComponent] = useState<boolean>(true)
       {/* <Foo/> */}
       {/* <CounterTwo start={100} />
       <CounterTwo start={300} /> */}
+
+      {/* LayoutEffect */}
+      {/*       
       
       {showComponent && 
       
@@ -198,6 +201,7 @@ const [showComponent, setShowComponent] = useState<boolean>(true)
       }
       
       <Button title="show Component"  onPress={()=>setShowComponent(!showComponent)}/>
+       */}
     </SafeAreaView>
   );
 };
