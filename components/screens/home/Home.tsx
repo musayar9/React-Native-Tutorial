@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   Button,
   FlatList,
   Image,
@@ -35,7 +36,9 @@ const Home = () => {
   const nav = useNavigation();
   return (
     <SafeAreaView style={{ flex: 1, marginTop: 50 }}>
-      {/* <StatusBar /> */}
+      <StatusBar />
+      {/* Activity Indicator loading animasyonu sunar */}
+      {/* <ActivityIndicator size="large" color={"red"}/> */}
       <View
         style={{
           flexDirection: "row",
