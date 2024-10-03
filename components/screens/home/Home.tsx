@@ -6,12 +6,15 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 import React from "react";
 import { useNavigation } from "expo-router";
 import { faker } from "@faker-js/faker/.";
-
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import StoryList from "./StoryList/StoryList";
+import PostList from "./PostList/PostList";
 interface Resource {
   url: string;
   id: string;
@@ -31,17 +34,42 @@ const images = Array<number>(20)
 const Home = () => {
   const nav = useNavigation();
   return (
-    <SafeAreaView style={{ flex: 1,  marginTop: 50 }}>
+    <SafeAreaView style={{ flex: 1, marginTop: 50 }}>
       {/* <StatusBar /> */}
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginHorizontal: 20,
+          borderBottomWidth: 1,
+          borderBottomColor: "gray",
+          paddingVertical: 5,
+        }}
+      >
+        <Text style={{ fontWeight: "bold", fontSize: 25 }}>Home</Text>
+        {/* <Button title="Profile" onPress={() => nav.navigate("Profile")} />
+         */}
 
-      <FlatList
+        <TouchableOpacity
+          style={styles.button} // Butonun stili
+          onPress={() => nav.navigate("Profile")} // Butona basılınca navigasyon
+        >
+          <Text style={styles.buttonText}>Profile</Text>
+        </TouchableOpacity>
+
+        <Text>
+          <MaterialIcons name="notifications-none" size={34} color="black" />
+        </Text>
+      </View>
+
+      {/* <FlatList
         data={images}
         //instagramdki hikaye gibi yan yana kaydırma yapmak için
-          horizontal={true}
-        
+        horizontal={true}
         //scroll bar görümtülemek istemyorsak
         showsVerticalScrollIndicator={false}
-        // eğer listenini horizontal durumda ise 
+        // eğer listenini horizontal durumda ise
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
@@ -50,13 +78,30 @@ const Home = () => {
             style={{ width: 60, height: 60, margin: 5, borderRadius: 30 }}
           />
         )}
-      />
+      /> */}
 
-      {/* <Button title="Profile" onPress={() => nav.navigate("Profile")} /> */}
+      <View style={{marginBottom:20}}>
+        <StoryList />
+      </View>
+
+      <View style={{ flex: 1 }}>
+        <PostList />
+      </View>
     </SafeAreaView>
   );
 };
 
 export default Home;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  button: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: "transparent", // Arka plan rengi kaldırıldı
+    // İstediğiniz renk
+  },
+  buttonText: {
+    color: "#007AFF", // Metnin rengi (özelleştirilebilir)
+    fontSize: 16,
+  },
+});
