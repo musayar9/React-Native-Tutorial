@@ -1,15 +1,59 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  FlatList,
+  Image,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React from "react";
 import { useNavigation } from "expo-router";
+import { faker } from "@faker-js/faker/.";
+
+interface Resource {
+  url: string;
+  id: string;
+}
+
+// içerisinde 20 tane resim olan dizi
+const images = Array<number>(20)
+  .fill(0)
+  .map<Resource>(
+    () =>
+      ({
+        id: faker.string.uuid(),
+        url: faker.image.urlPicsumPhotos(),
+      } as Resource)
+  );
 
 const Home = () => {
   const nav = useNavigation();
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Home</Text>
+    <SafeAreaView style={{ flex: 1,  marginTop: 50 }}>
+      {/* <StatusBar /> */}
 
-      {/* <Button title="Profile" onPress={()=>nav.navigate("Profile")}/> */}
-    </View>
+      <FlatList
+        data={images}
+        //instagramdki hikaye gibi yan yana kaydırma yapmak için
+          horizontal={true}
+        
+        //scroll bar görümtülemek istemyorsak
+        showsVerticalScrollIndicator={false}
+        // eğer listenini horizontal durumda ise 
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <Image
+            source={{ uri: item.url }}
+            style={{ width: 60, height: 60, margin: 5, borderRadius: 30 }}
+          />
+        )}
+      />
+
+      {/* <Button title="Profile" onPress={() => nav.navigate("Profile")} /> */}
+    </SafeAreaView>
   );
 };
 
