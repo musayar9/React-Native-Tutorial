@@ -4,14 +4,16 @@ import { HomePage } from "../screens";
 import Home from "../screens/home/Home";
 import Profile from "../screens/profile/Profile";
 import ContextData from "../screens/context/ContextData";
+import CreateRefApp from "../screens/CreateRef/CreateRefApp";
 
 const Stack = createNativeStackNavigator();
 const UserStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Context"
+      initialRouteName="CreateRef"
       screenOptions={{ headerShown: false }}
     >
+      <Stack.Screen name="CreateRef" component={CreateRefApp} />
       <Stack.Screen name="Context" component={ContextData} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Home" component={Home} />
