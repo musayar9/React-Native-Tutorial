@@ -10,13 +10,13 @@ const Stack = createNativeStackNavigator();
 const UserStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="CreateRef"
+      initialRouteName="Home"
       screenOptions={{ headerShown: false }}
     >
+      <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="CreateRef" component={CreateRefApp} />
       <Stack.Screen name="Context" component={ContextData} />
       <Stack.Screen name="Profile" component={Profile} />
-      <Stack.Screen name="Home" component={Home} />
     </Stack.Navigator>
   );
 };

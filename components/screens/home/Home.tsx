@@ -3,6 +3,8 @@ import {
   Button,
   FlatList,
   Image,
+  Modal,
+  Pressable,
   SafeAreaView,
   StatusBar,
   StyleSheet,
@@ -10,12 +12,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { memo, useState } from "react";
 import { useNavigation } from "expo-router";
 import { faker } from "@faker-js/faker/.";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import StoryList from "./StoryList/StoryList";
-import PostList from "./PostList/PostList";
+import PostList, { MemorizedPostList } from "./PostList/PostList";
 interface Resource {
   url: string;
   id: string;
@@ -31,9 +33,17 @@ const images = Array<number>(20)
         url: faker.image.urlPicsumPhotos(),
       } as Resource)
   );
+  
+  // const MemorizedPostList = memo(()=>{
+  //   return (
+  //   <PostList/>
+  //   )
+  // })
 
 const Home = () => {
   const nav = useNavigation();
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+
   return (
     <SafeAreaView style={{ flex: 1, marginTop: 50 }}>
       <StatusBar />
@@ -83,13 +93,65 @@ const Home = () => {
         )}
       /> */}
 
-      <View style={{marginBottom:20}}>
+      <View style={{ marginBottom: 20 }}>
         <StoryList />
       </View>
 
       <View style={{ flex: 1 }}>
-        <PostList />
+
+      <MemorizedPostList/>
       </View>
+
+      <Modal
+        transparent
+        visible={isModalVisible}
+        onRequestClose={() => {}}
+        animationType="slide"
+      >
+        <View
+          style={{
+            backgroundColor: "#ebebeb",
+            position: "absolute",
+            height: 300,
+            bottom: 0,
+            width: "100%",
+            borderTopLeftRadius: 40,
+            borderTopRightRadius: 40,
+          }}
+        >
+          <Pressable
+            onPress={() => setIsModalVisible(false)}
+            style={{
+              width: 300,
+              height: 50,
+              backgroundColor: "rgba(68,51,232,1)",
+              alignSelf: "center",
+              borderRadius: 30,
+              margin: 10,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ fontSize: 20, color: "white" }}>CLOSE</Text>
+          </Pressable>
+        </View>
+      </Modal>
+
+      <Pressable
+        onPress={() => setIsModalVisible(!isModalVisible)}
+        style={{
+          width: 300,
+          height: 50,
+          backgroundColor: "rgba(68,51,232,1)",
+          alignSelf: "center",
+          borderRadius: 30,
+          margin: 10,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 20, color: "white" }}>Touch</Text>
+      </Pressable>
     </SafeAreaView>
   );
 };

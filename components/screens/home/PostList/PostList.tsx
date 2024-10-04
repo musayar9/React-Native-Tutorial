@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { memo } from "react";
 import { faker } from "@faker-js/faker/.";
 import PostItem from "../PostItem/PostItem";
 
@@ -12,6 +12,11 @@ export interface Post {
   likes: number;
   comments: number;
 }
+
+export const MemorizedPostList =  memo(()=>{
+  return <PostList/>
+})
+
 
 const posts = Array<number>(10)
   .fill(0)
