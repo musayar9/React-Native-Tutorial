@@ -1,6 +1,7 @@
 import { Button, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import Products from "./Products";
 
 const Profile = () => {
   const nav = useNavigation();
@@ -23,6 +24,8 @@ const Profile = () => {
           <Text style={styles.buttonText}>Home</Text>
         </TouchableOpacity>
       </View>
+      
+      <Products/>
       
       
     </SafeAreaView>

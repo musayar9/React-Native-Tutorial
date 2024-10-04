@@ -2,10 +2,14 @@ import { Image, StyleSheet, Platform } from "react-native";
 
 import RootNavigation from "@/components/navigation/RootNavigation";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { NameContextProvider } from "@/components/screens/context/NameContext";
 export default function HomeScreen() {
   return (
     <GestureHandlerRootView>
+    <NameContextProvider>
+    
       <RootNavigation />
+    </NameContextProvider>
     </GestureHandlerRootView>
   );
 }
